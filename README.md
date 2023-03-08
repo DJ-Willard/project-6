@@ -3,28 +3,36 @@ Brevet time calculator with MongoDB, and a RESTful API!
 
 Read about MongoEngine and Flask-RESTful before you start: [http://docs.mongoengine.org/](http://docs.mongoengine.org/), [https://flask-restful.readthedocs.io/en/latest/](https://flask-restful.readthedocs.io/en/latest/).
 
-## Before you begin
-You *HAVE TO* copy `.env-example` into `.env` and specify your container port numbers there!
-Note that the default values (5000 and 5000) will work!
+## Project Overview
 
-*DO NOT PLACE LOCAL PORTS IN YOUR COMPOSE FILE!*
+This project we Focusing on Restful API. According to Redhat.com
+"A REST API (also known as RESTful API) is an application programming interface (API or web API) that conforms to the constraints of REST architectural style and allows for interaction with RESTful web services. REST stands for representational state transfer and was created by computer scientist Roy Fielding.
+REST is a set of architectural constraints, not a protocol or a standard. API developers can implement REST in a variety of ways."
 
-## Overview
+* REST Principles
+	* #1 The key abstraction of information is a resource, named by a URI. Any information that can be named can be a resource
+	* #2 All interactions are context-free: each 	interaction contains all of the information necessary to understand the request, independent of any requests that may have preceded it.
+	* #3 The representation of a resource is a sequence of bytes, plus representation metadata to describe those bytes. The particular form of the representation can be negotiated between REST components
+	* #4 Components perform only a small set of well-defined methods on a resource producing a representation to capture the current or intended state of that resource and transfer that representation between components. These methods are global to the specific architectural instantiation of REST; for instance, all resources exposed via HTTP are expected to support each operation identically
 
-You will reuse your code from Project 5, which already has two services:
+So we fallowed the Schema below in tasks completed to implement.
+
+
+In this Project We will use project 5s base code which focused on Mongo DB and Docker compose, This project already has two services:
 
 * Brevets
 	* The entire web service
 * MongoDB
+	* As a database
 
-For this project, you will re-organize `Brevets` into two separate services:
+For this project, We re-organized `Brevets` into two separate services:
 
 * Web (Front-end)
 	* Time calculator (basically everything you had in project 4)
 * API (Back-end)
 	* A RESTful service to expose/store structured data in MongoDB.
 
-## Tasks
+## Tasks Completed
 
 * Implement a RESTful API in `api/`:
 	* Write a data schema using MongoEngine for Checkpoints and Brevets:
@@ -46,27 +54,13 @@ For this project, you will re-organize `Brevets` into two separate services:
 
 * Copy over `brevets/` from your completed project 5.
 	* Replace every database related code in `brevets/` with calls to the new API.
-		* Remember: AutoGrader will ensure there is NO CONNECTION between `brevets` and `db` services. `brevets` should only operate through `api` and still function the way it did in project 5.
 		* Hint: Submit should send a POST request to the API to insert, Display should send a GET request, and display the last entry.
 	* Remove `config.py` and adjust `flask_brevets.py` to use the `PORT` and `DEBUG` values specified in env variables (see `docker-compose.yml`).
 
-* Update README.md with API documentation added.
+* Updated README.md with API documentation added.
 
 As always you'll turn in your `credentials.ini` through Canvas.
 
-## Grading Rubric
-
-* If your code works as expected: 100 points. This includes:
-    * API routes as outlined above function exactly the way expected,
-    * Web application works as expected in project 5,
-    * README is updated with the necessary details.
-
-* If the front-end service does not work, 20 points will be docked.
-
-* For each of the 5 requests that do not work, 15 points will be docked.
-
-* If none of the above work, 5 points will be assigned assuming project builds and runs, and `README` is updated. Otherwise, 0 will be assigned.
-
 ## Authors
 
-Michal Young, Ram Durairajan. Updated by Ali Hassani.
+Daniel Willard
