@@ -25,8 +25,8 @@ api = Api(app)
 #
 # Bind resources to paths here:
 # api.add_resource(...)
-api.add_resource(Brevets, "/api/brevet/<id>")
-api.add_resource(Brevet, "/api/brevets")
+api.add_resource(Brevet, "/api/brevet/<id>")
+api.add_resource(Brevets, "/api/brevets")
 
 if __name__ == "__main__":
     # Run flask app normally
