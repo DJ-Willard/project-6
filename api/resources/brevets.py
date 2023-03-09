@@ -7,6 +7,18 @@ from flask_restful import Resource
 # You need to implement this in database/models.py
 from database.models import Brevet
 
+class Brevet(Resource):
+     #GET: finds ALL brevets in the collection, returns them
+    def get(self):
+        json_object = Brevet.objects().to_jason(0)
+        return Response(json_object, mimetype="application/json", status=200)
+    
+    #POST: inserts a new brevet into the collection based on the fields in the request
+    def post(self):
+        body = request.json
+        result = Brevet(**body).save()
+        return {'_id': str(result.id)}, 200
+
 # MongoEngine queries:
 # Brevet.objects() : similar to find_all. Returns a MongoEngine query
 # Brevet(...).save() : creates new brevet

@@ -3,13 +3,11 @@ Replacement for RUSA ACP brevet time calculator
 (see https://rusa.org/octime_acp.html)
 
 """
-
+import os
 import flask
 from flask import request
 import arrow  # Replacement for datetime, based on moment.js
 import acp_times  # Brevet time calculations
-#from brevetsmongo import insert_brevet, retrieve_brevet
-#import config
 
 import logging
 
@@ -23,7 +21,25 @@ def retrieve_brevet(*args, **kwargs):
 # Globals
 ###
 app = flask.Flask(__name__)
-CONFIG = config.configuration()
+app.debug = True if "DEBUG" not in os.environ else os.environ["DEBUG"]
+port_num = True if "PORT" not in os.environ else os.environ["PORT"]
+app.logger.setLevel(logging.DEBUG)
+
+##################################################
+################### API Callers ################## 
+##################################################
+API_ADDR = os.environ["API_ADDR"]
+API_PORT = os.environ["API_PORT"]
+API_URL = f"http://{API_ADDR}:{API_PORT}/api/"
+
+def retrieve_brevet():
+    control_lists = requests.get(f"{API_URL}/brevet").json()
+    brevet = control_lists[-1]
+    return brevet["brevet_dist"], brevet["start_time"], brevet["control_list"]
+
+def insert_brevet(brevet_dist, start_time, control_list):
+    _id = requests.post(f"{API_URL}/ ", json={"brevet_dist": brevet_dist, "start_time": start_time, "control_list": control_list}).json()
+    return _id
 
 ###
 # Pages
@@ -130,10 +146,10 @@ def _calc_times():
 
 #############
 
-app.debug = CONFIG.DEBUG
+app.debug = os.environ["DEBUG"]
 if app.debug:
     app.logger.setLevel(logging.DEBUG)
 
 if __name__ == "__main__":
-    print("Opening for global access on port {}".format(CONFIG.PORT))
-    app.run(port=CONFIG.PORT, host="0.0.0.0")
+    #print("Opening for global access on port {}".format(CONFIG.PORT))
+    app.run(port=os.environ["PORT"], host="0.0.0.0")

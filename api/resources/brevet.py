@@ -7,6 +7,25 @@ from flask_restful import Resource
 # You need to implement this in database/models.py
 from database.models import Brevet
 
+class Brevet(Resource):
+    #GET: finds the document with the given id from the collection
+    def get(self, _id):
+        brevet = Brevet.object.get(id=id).to_json()
+        return Response(brevet, mimetype = "application/json", status=200)
+    
+    #PUT: updates the document with the given id based on the fields in the request
+    def put(self, _id):
+        input_json = request.json
+        Brevet.object.get(id=id).update(**input_json)
+        return '', 200
+    
+    #DELETE: deletes the document with the given id from the collection
+    def delete(self, _id):
+        Brevet.object.get(id=id).delete()
+        return '', 200
+        
+
+
 # MongoEngine queries:
 # Brevet.objects() : similar to find_all. Returns a MongoEngine query
 # Brevet(...).save() : creates new brevet
