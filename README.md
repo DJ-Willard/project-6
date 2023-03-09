@@ -1,5 +1,5 @@
 # UOCIS322 - Project 6 #
-Brevet time calculator with MongoDB, and a RESTful API!
+Brevet time calculator with MongoDB speficially mongo engine, and a RESTful API!
 
 Read about MongoEngine and Flask-RESTful before you start: [http://docs.mongoengine.org/](http://docs.mongoengine.org/), [https://flask-restful.readthedocs.io/en/latest/](https://flask-restful.readthedocs.io/en/latest/).
 
@@ -15,6 +15,7 @@ REST is a set of architectural constraints, not a protocol or a standard. API de
 	* #3 The representation of a resource is a sequence of bytes, plus representation metadata to describe those bytes. The particular form of the representation can be negotiated between REST components
 	* #4 Components perform only a small set of well-defined methods on a resource producing a representation to capture the current or intended state of that resource and transfer that representation between components. These methods are global to the specific architectural instantiation of REST; for instance, all resources exposed via HTTP are expected to support each operation identically
 
+I also used a postman to test my api Restful i woulkd reccommend others do the same.
 So we fallowed the Schema below in tasks completed to implement.
 
 
@@ -60,6 +61,14 @@ For this project, We re-organized `Brevets` into two separate services:
 * Updated README.md with API documentation added.
 
 As always you'll turn in your `credentials.ini` through Canvas.
+
+## Personal Notes
+
+* This project is a built out project form p4 and p5 each biuilding on eachother. 
+* this project required no html/ js updtaes.
+* this code focues on flask and files cross commuication though directory structure.
+*This project uses an api to access database and reuse of project 4 alogithm and p5 flask API strucure. 
+* we just change this to a restful API
 
 ## Authors
 
