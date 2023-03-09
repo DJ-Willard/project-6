@@ -5,7 +5,6 @@ import os
 import logging
 # The library we use to send requests to the API
 # Not to be confused with flask.request.
-import requests
 from flask import Flask
 from flask_restful import Api
 from mongoengine import connect
