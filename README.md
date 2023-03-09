@@ -68,7 +68,7 @@ As always you'll turn in your `credentials.ini` through Canvas.
 * this project required no html/ js updtaes.
 * this code focues on flask and files cross commuication though directory structure.
 *This project uses an api to access database and reuse of project 4 alogithm and p5 flask API strucure. 
-* we just change this to a restful API
+* We just change this to a restful API
 
 ## Authors
 

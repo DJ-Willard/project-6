@@ -4,6 +4,7 @@ Replacement for RUSA ACP brevet time calculator
 
 """
 import os
+import logging
 # The library we use to send requests to the API
 # Not to be confused with flask.request.
 import requests
@@ -11,8 +12,6 @@ import flask
 from flask import request
 import arrow  # Replacement for datetime, based on moment.js
 import acp_times  # Brevet time calculations
-
-import logging
 
 
 ### the fallowing in to make complier happy
@@ -36,12 +35,12 @@ API_PORT = os.environ["API_PORT"]
 API_URL = f"http://{API_ADDR}:{API_PORT}/api/"
 
 def retrieve_brevet():
-    control_lists = requests.get(f"{API_URL}/brevet").json()
+    control_lists = requests.get(f"{API_URL}/brevets").json()
     brevet = control_lists[-1]
     return brevet["brevet_dist"], brevet["start_time"], brevet["control_list"]
 
 def insert_brevet(brevet_dist, start_time, control_list):
-    _id = requests.post(f"{API_URL}/ ", json={"brevet_dist": brevet_dist, "start_time": start_time, "control_list": control_list}).json()
+    _id = requests.post(f"{API_URL}/brevets", json={"brevet_dist": brevet_dist, "start_time": start_time, "control_list": control_list}).json()
     return _id
 
 ###
