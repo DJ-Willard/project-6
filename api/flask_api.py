@@ -2,9 +2,18 @@
 Brevets RESTful API
 """
 import os
+import logging
 from flask import Flask
 from flask_restful import Api
 from mongoengine import connect
+
+###
+# Globals
+###
+app = Flask(__name__)
+
+
+
 # You need to implement two resources: Brevet and Brevets.
 # Uncomment when done:
 # from resources.brevet import Brevet
@@ -20,7 +29,11 @@ connect(host=f"mongodb://{os.environ['MONGODB_HOSTNAME']}:27017/brevetsdb")
 # Bind resources to paths here:
 # api.add_resource(...)
 
+app.debug = os.environ["DEBUG"]
+if app.debug:
+    app.logger.setLevel(logging.DEBUG)
+
 if __name__ == "__main__":
     # Run flask app normally
     # Read DEBUG and PORT from environment variables.
-    pass
+    app.run(port=os.environ["PORT"], host="0.0.0.0")
