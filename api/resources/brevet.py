@@ -5,7 +5,7 @@ from flask import Response, request
 from flask_restful import Resource
 
 # You need to implement this in database/models.py
-from database.models import Brevet
+from database.models import Brevet, Control_List
 
 class Brevet(Resource):
     #GET: finds the document with the given id from the collection
