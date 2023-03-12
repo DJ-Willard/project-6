@@ -14,18 +14,11 @@ import arrow  # Replacement for datetime, based on moment.js
 import acp_times  # Brevet time calculations
 
 
-### the fallowing in to make complier happy
-def insert_brevet(*args, **kwargs):
-    pass
-def retrieve_brevet(*args, **kwargs):
-    pass
 ###
 # Globals
 ###
 app = flask.Flask(__name__)
-app.debug = True if "DEBUG" not in os.environ else os.environ["DEBUG"]
-port_num = True if "PORT" not in os.environ else os.environ["PORT"]
-app.logger.setLevel(logging.DEBUG)
+
 
 ##################################################
 ################### API Callers ################## 

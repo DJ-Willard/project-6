@@ -3,6 +3,7 @@ Resource: Brevet
 """
 from flask import Response, request
 from flask_restful import Resource
+from datetime import datetime
 
 # You need to implement this in database/models.py
 from database.models import Brevet, Control_List
@@ -10,18 +11,18 @@ from database.models import Brevet, Control_List
 class Brevet(Resource):
     #GET: finds the document with the given id from the collection
     def get(self, _id):
-        brevet = Brevet.object.get(id=id).to_json()
+        brevet = Brevet.object.get(id=_id).to_json()
         return Response(brevet, mimetype = "application/json", status=200)
     
     #PUT: updates the document with the given id based on the fields in the request
     def put(self, _id):
         input_json = request.json
-        Brevet.object.get(id=id).update(**input_json)
+        Brevet.object.get(id=_id).update(**input_json)
         return '', 200
     
     #DELETE: deletes the document with the given id from the collection
     def delete(self, _id):
-        Brevet.object.get(id=id).delete()
+        Brevet.object.get(id=_id).delete()
         return '', 200
         
 
