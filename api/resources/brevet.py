@@ -6,13 +6,13 @@ from flask_restful import Resource
 from datetime import datetime
 
 # You need to implement this in database/models.py
-from database.models import Brevet, Control_List
+from database.models import Brevet, Controls
 
 class Brevet(Resource):
     #GET: finds the document with the given id from the collection
     def get(self, _id):
-        brevet = Brevet.object.get(id=_id).to_json()
-        return Response(brevet, mimetype = "application/json", status=200)
+        body = Brevet.object.get(id=_id).to_json()
+        return Response(body, mimetype = "application/json", status=200)
     
     #PUT: updates the document with the given id based on the fields in the request
     def put(self, _id):

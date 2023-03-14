@@ -1,6 +1,6 @@
 from mongoengine import *
 
-class Control_List(EmbeddedDocument):
+class Controls(EmbeddedDocument):
     """
     Disregard schema and datetime for lab 3/10
     A MongoEngine EmbeddedDocument containing:
@@ -26,4 +26,4 @@ class Brevet(Document):
     """
     brevet_dist = FloatField(required=True)
     start_time = StringField(required=True)
-    control_list = EmbeddedDocumentListField(Control_List)
+    control_list = EmbeddedDocumentListField(Controls)
