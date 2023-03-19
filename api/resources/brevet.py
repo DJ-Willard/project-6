@@ -17,12 +17,12 @@ class Brevet(Resource):
     #PUT: updates the document with the given id based on the fields in the request
     def put(self, _id):
         input_json = request.json
-        Brevet.object.get(id=_id).update(**input_json)
+        B_Data.object.get(id=_id).update(**input_json)
         return '', 200
     
     #DELETE: deletes the document with the given id from the collection
     def delete(self, _id):
-        Brevet.object.get(id=_id).delete()
+        B_Data.object.get(id=_id).delete()
         return '', 200
         
 

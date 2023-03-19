@@ -15,7 +15,7 @@ class Brevets(Resource):
     #POST: inserts a new brevet into the collection based on the fields in the request
     def post(self):
         body = request.json
-        result = Brevet(**body).save()
+        result = B_Data(**body).save()
         return {'_id': str(result.id)}, 200
 
 # MongoEngine queries:
