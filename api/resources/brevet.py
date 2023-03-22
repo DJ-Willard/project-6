@@ -6,23 +6,23 @@ from flask_restful import Resource
 from datetime import datetime
 
 # You need to implement this in database/models.py
-from database.models import B_Data, Controls
+from database.models import Brevet, Controls
 
-class Brevet(Resource):
+class Brevet_Data(Resource):
     #GET: finds the document with the given id from the collection
     def get(self, _id):
-        body = B_Data.object.get(id=_id).to_json()
+        body = Brevet.object.get(id=_id).to_json()
         return Response(body, mimetype = "application/json", status=200)
     
     #PUT: updates the document with the given id based on the fields in the request
     def put(self, _id):
         input_json = request.json
-        B_Data.object.get(id=_id).update(**input_json)
+        Brevet.object.get(id=_id).update(**input_json)
         return '', 200
     
     #DELETE: deletes the document with the given id from the collection
     def delete(self, _id):
-        B_Data.object.get(id=_id).delete()
+        Brevet.object.get(id=_id).delete()
         return '', 200
         
 

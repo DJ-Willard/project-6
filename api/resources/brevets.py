@@ -4,18 +4,18 @@ Resource: Brevets
 from flask import Response, request
 from flask_restful import Resource
 # You need to implement this in database/models.py
-from database.models import B_Data, Controls
+from database.models import Brevet, Controls
 
 class Brevets(Resource):
      #GET: finds ALL brevets in the collection, returns them
     def get(self):
-        json_object = B_Data.objects().to_json()
+        json_object = Brevet.objects().to_json()
         return Response(json_object, mimetype="application/json", status=200)
     
     #POST: inserts a new brevet into the collection based on the fields in the request
     def post(self):
         body = request.json
-        result = B_Data(**body).save()
+        result = Brevet(**body).save()
         return {'_id': str(result.id)}, 200
 
 # MongoEngine queries:

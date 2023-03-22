@@ -16,7 +16,7 @@ class Controls(EmbeddedDocument):
     open_t = StringField(required=True)
     close_t = StringField(required=True)
 
-class B_Data(Document):
+class Brevet(Document):
     """ 
     Disregard schema and datetime for lab 3/10
     A MongoEngine document containing:
